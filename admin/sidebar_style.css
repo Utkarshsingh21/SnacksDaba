@@ -1,0 +1,59 @@
+.offcanvas {
+  width: 100%;
+  max-width: 230px;
+}
+
+/* MD and above (≥768px) */
+.offcanvas-backdrop.show {
+  pointer-events: none;
+  background-color: transparent;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+offcanvas-start {
+  width: 230px !important; /* or use max-width: 230px if that's what you want */
+}
+
+.max-w-md {
+  max-width: 230px;
+}
+
+#offcanvasSidebar a:hover {
+  color: #0d6efd !important;
+}
+
+#offcanvasSidebar .accordion-button:hover{
+  color: #0d6efd !important;
+}
+
+
+/* Fonts */
+/* Fine-tune font sizes for extra control */
+@media (max-width: 576px) {
+  .form-label, .form-control, .btn {
+    font-size: 0.95rem;
+  }
+}
+
+@media (min-width: 577px) and (max-width: 768px) {
+  .form-label, .form-control, .btn {
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 769px) {
+  .form-label {
+    font-size: 1.25rem;
+  }
+
+  .form-control {
+    font-size: 1.1rem;
+  }
+
+  .btn {
+    font-size: 1.2rem;
+  }
+}
