@@ -1,0 +1,100 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing:border-box;
+}
+
+body {
+	background: url("https://images.unsplash.com/photo-1600891964599-f61ba0e24092");
+	background-size: cover;
+	background-repeat: no-repeat;
+	height: 100vh;
+}
+
+
+.overlay {
+	position: fixed;
+	background: rgba(0,0,0,0.6);
+}
+
+.navbar {
+	background-color: transparent;
+	display: grid;
+	grid-template-columns: 1fr 2fr 1fr;
+	gap: 10px;
+	/*place-items: center;*/
+}
+
+.logo {
+	grid-column: 1/2;
+	display: grid;
+	place-items: center;
+	font-weight: bold;
+	font-size: 30px;
+}
+.input-search {
+	grid-column: 2/3;
+	dispaly:block;
+	width: 100%;
+	margin-top: 1.6%;
+	border: none;
+	border-radius: 8px;
+	height: 20px;
+	background-color: whitesmoke;
+	text-align:center;
+}
+.my-ul {
+	grid-column: 3/4;
+	display: flex;
+	list-style-type: none;
+	gap:10%;
+	justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.my-ul li a{
+	text-decoration: none;
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 94.5vh;
+  gap: 25px;
+  color: black;
+  font-size: 40px;
+}
+
+.content a{
+  text-decoration: none;
+  padding: 10px 20px;
+  background-color: blue;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.login{
+  padding: 10px 20px;
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.signup {
+	padding: 10px 20px;
+	background-color: yellow;
+	color:black;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	font-weight: bold;
+    font-size: 15px;
+}

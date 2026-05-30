@@ -1,0 +1,75 @@
+
+<!-- Toggle Button -->
+<button class="chat-toggle-btn fw-bold" onclick="toggleChat()">
+💬 Chat
+</button>
+
+<!-- Chat Widget -->
+<div id="chat-widget" class="chat-widget">
+    <div class="chat-header">
+        Help Assistant
+        <span style="cursor:pointer;" onclick="toggleChat()">✖</span>
+    </div>
+
+    <div id="chat-body" class="chat-body">Ask me about products,delivery,payment,return</div>
+
+    <div class="chat-input-area">
+        <input type="text" id="chat-input" placeholder="Ask me about products..." />
+        <button onclick="sendMessage()">Send</button>
+    </div>
+</div>
+
+<script>
+
+// Open / Close Chat
+function toggleChat() {
+    let widget = document.getElementById("chat-widget");
+
+    if (widget.style.display === "block") {
+        widget.style.display = "none";
+    } else {
+        widget.style.display = "block";
+    }
+}
+
+// Send Message
+function sendMessage() {
+    let inputEl = document.getElementById("chat-input");
+    let message = inputEl.value.trim();
+    if (!message) return;
+
+    let chatBody = document.getElementById("chat-body");
+
+    // Show user message
+    chatBody.innerHTML += `<div><b>You:</b> ${message}</div>`;
+    inputEl.value = '';
+
+    // Scroll down
+    chatBody.scrollTop = chatBody.scrollHeight;
+
+    // Typing indicator
+    let typingDiv = document.createElement("div");
+    typingDiv.id = "typing";
+    typingDiv.innerHTML = "<b>Bot:</b> <i>typing...</i>";
+    chatBody.appendChild(typingDiv);
+    chatBody.scrollTop = chatBody.scrollHeight;
+
+    // Call PHP backend
+    fetch('chatbot.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: `message=${encodeURIComponent(message)}`
+    })
+    .then(response => response.text())
+    .then(data => {
+        typingDiv.remove();
+        chatBody.innerHTML += `<div><b>Bot:</b> ${data}</div>`;
+        chatBody.scrollTop = chatBody.scrollHeight;
+    })
+    .catch(error => {
+        typingDiv.remove();
+        chatBody.innerHTML += `<div><b>Bot:</b> Error connecting to server.</div>`;
+    });
+}
+
+</script>
